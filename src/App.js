@@ -1,24 +1,30 @@
-import logo from './logo.svg';
-import './App.css';
+import { AppBar, Box, CssBaseline, Grid, Toolbar } from "@mui/material";
+import ElectricBoltIcon from "@mui/icons-material/ElectricBolt";
+import { Container } from "@mui/system";
+import "./App.css";
+import EnergyHandler from "./EnergyHandler";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <CssBaseline />
+      <AppBar position="relative">
+        <Toolbar>
+          <ElectricBoltIcon />
+        </Toolbar>
+      </AppBar>
+      <main>
+        <div>
+          <Box sx={{ p: 1 }}>
+            <Container maxWidth="lg" className="container">
+              <Grid container justify="center" spacing={2}>
+                <EnergyHandler />
+              </Grid>
+            </Container>
+          </Box>
+        </div>
+      </main>
+    </>
   );
 }
 
