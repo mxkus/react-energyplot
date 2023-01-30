@@ -2,8 +2,18 @@ import * as React from "react";
 
 import Datepicker from "./Datepicker";
 import EnergyProduction from "./EnergyProduction";
+import EnergyChart from "./EnergyChart";
 import Country from "./Country";
-import { Button, Grid, Typography } from "@mui/material";
+import {
+  Button,
+  Grid,
+  ToggleButton,
+  ToggleButtonGroup,
+  Typography,
+} from "@mui/material";
+
+import SsidChartIcon from "@mui/icons-material/SsidChart";
+import TableRowsIcon from "@mui/icons-material/TableRows";
 
 class EnergyHandler extends React.Component {
   constructor() {
@@ -13,6 +23,7 @@ class EnergyHandler extends React.Component {
       formattedDate: "20200101",
       energyData: {},
       country: "DE",
+      displayTable: true,
     };
   }
 
@@ -78,6 +89,25 @@ class EnergyHandler extends React.Component {
     });
   }
 
+  handleToggle = (event, value) => {
+    this.setState((prevState) => {
+      return {
+        ...prevState,
+        displayTable: value,
+      };
+    });
+  };
+
+  tableOrChart() {
+    let returnValue;
+    if (this.state.displayTable) {
+      returnValue = <EnergyProduction energyData={this.state.energyData} />;
+    } else {
+      returnValue = <EnergyChart energyData={this.state.energyData} />;
+    }
+    return returnValue;
+  }
+
   render() {
     return (
       <>
@@ -104,8 +134,21 @@ class EnergyHandler extends React.Component {
           </Button>
         </Grid>
         <Grid item xs={12} xl={8}>
+          <ToggleButtonGroup
+            value={this.state.displayTable}
+            exclusive
+            onChange={this.handleToggle}
+            aria-label="text alignment"
+          >
+            <ToggleButton value={true} aria-label="left aligned">
+              <SsidChartIcon />
+            </ToggleButton>
+            <ToggleButton value={false} aria-label="centered">
+              <TableRowsIcon />
+            </ToggleButton>
+          </ToggleButtonGroup>
           <Typography variant="h6">{this.printHeader()}</Typography>
-          <EnergyProduction energyData={this.state.energyData} />
+          {this.tableOrChart()}
         </Grid>
       </>
     );
