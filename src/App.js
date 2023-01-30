@@ -16,7 +16,7 @@ function App() {
       <main>
         <div>
           <Box sx={{ p: 1 }}>
-            <Container maxWidth="lg" className="container">
+            <Container className="container">
               <Grid container justify="center" spacing={2}>
                 <EnergyHandler />
               </Grid>

@@ -81,19 +81,19 @@ class EnergyHandler extends React.Component {
   render() {
     return (
       <>
-        <Grid item xs={8}>
+        <Grid item xs={12} xl={8}>
           <Datepicker
             onChange={this.handleChangeDate}
             value={this.state.date}
           />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} xl={8}>
           <Country
             handleCountryChange={this.handleCountryChange}
             country={this.state.country}
           />
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} xl={8}>
           <Button
             onClick={() => {
               this.getEnergy();
@@ -103,7 +103,7 @@ class EnergyHandler extends React.Component {
             Get Energy Production
           </Button>
         </Grid>
-        <Grid item xs={8}>
+        <Grid item xs={12} xl={8}>
           <Typography variant="h6">{this.printHeader()}</Typography>
           <EnergyProduction energyData={this.state.energyData} />
         </Grid>

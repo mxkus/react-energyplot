@@ -8,7 +8,6 @@ function transformEnergyData(data) {
     technology: k,
     val: data[k],
   }));
-  console.log(d);
   return d;
 }
 
